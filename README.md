@@ -16,6 +16,10 @@ transmitted automatically, page by page. During transmission, a single tap on th
 will switch to manual mode, with the left-side TouchBar used for page-up and the right-side 
 TouchBar for page-down. A double-tap on the TouchBar will directly exit the Even AI function.
 
+To use ChatGPT's 4o mini model, set the `OPENAI_API_KEY` environment variable
+when building. Recognized speech will be sent to ChatGPT and the response is
+displayed page by page on the glasses.
+
 
 ## Image Sending
 Image transmission currently supports 1-bit, 576*136 pixel BMP images (refer to image_1.bmp, image_2.bmp in the project). 
@@ -33,6 +37,14 @@ The core steps are as follows:
 - 1. Divide the input text into lines according to the actual display width of the glasses (the value in the demo is 488, which can be fine-tuned) and the font size you want (the value in the demo is 21, which can be customized);
 - 2. Combine the number of lines per screen (the value in the demo is 5) and the size limit of each ble packet to divide the text divided in step 1 into packets (5 lines are displayed per screen in the demo, the first three lines form one packet, and the last two lines form one packet);
 - 3. Use the Text Sending protocol in the protocol section below to send the multi-packet data in step 2 to the glasses by screen (a timer is used in the demo to send each screen of text in sequence).
+
+## Raw Audio Recording Test
+The Features page now includes a **Raw Audio Recording Test** option. When both
+touch pads are tapped within a configurable interval (default 0.5 s), the app
+sends the message `In Raw Recording Mode, max 60 seconds, tap both touch pad to end`
+to the glasses and begins capturing raw audio from the right microphone. Tap both
+pads again (or wait for 60 s) to stop recording. The app displays `Recording ended`
+for five seconds and saves the raw audio data into the app documents directory.
 
 
 

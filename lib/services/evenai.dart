@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:demo_ai_even/ble_manager.dart';
 import 'package:demo_ai_even/controllers/evenai_model_controller.dart';
-import 'package:demo_ai_even/services/api_services_deepseek.dart';
+import 'package:demo_ai_even/services/api_services_gpt4o.dart';
 import 'package:demo_ai_even/services/proto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -145,7 +145,7 @@ class EvenAI {
       return;
     }
 
-    final apiService = ApiDeepSeekService();
+    final apiService = ApiGpt4oService();
     String answer = await apiService.sendChatRequest(combinedText);
   
     print("recordOverByOS----startSendReply---combinedText-------*$combinedText*-----answer----$answer----");
